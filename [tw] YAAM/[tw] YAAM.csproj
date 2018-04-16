@@ -96,7 +96,6 @@
     <Content Include="Textures\contrast_Gravel.png" />
     <Content Include="Textures\RawCompost.png" />
     <Content Include="Textures\Fertilizer.png" />
-    <Content Include="Textures\Recipes.xml" />
     <Content Include="Textures\IndustrialComposter.png" />
     <Content Include="Textures\SoilFertilized.png" />
     <Content Include="Textures\SoilEnriched.png" />

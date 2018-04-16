@@ -5,48 +5,49 @@
      <targetVersion>0.18.0</targetVersion>
      <description>
           
-Of course there are quite some other mods offering a broad range of terraforming.
-And of course is the approach of this mod inspired by those mods, but there are a couple of differences "by design" to be mentioned:
-     * stay as close to vanilla as possible
-     * focus on agriculture, no more, no less
-     * add a gameplay element that works through every phase of the game
-The last point is the one responsible for having the somewhat artifical "make fertilizer out of compost" mechanic - implemented to give compost usage throughout the game.     
+Of course there are quite some other mods offering a broad range of terraforming, but to me some are either to complicated or do not improve gameplay.
+So I startet with this one:
+     * simple, but respecting research progression
+     * close to vanilla
+     * add an "agriculture" gameplay element: 
+       By default the improved terrains are converted back to normal soil after harvesting, leaving a blueprint to improve the terrain again.
+       Both behaviours can be turned off with the standard ingame mod settings 
+     
+New research: Composting
 
-new research: Composting
+New items and buildings:
+     * raw compost:
+          Organic stuff giving the "... has rotted away in storage" message now converts into "raw compost".
+          Can be crafted at the crafting spot from any nutrients.
+          Can be used in a composter, burned or disposed somewhere.
+     * compost:
+          obviously "composting" research required
+          produced in one of the available composters
+          > compost bin: 
+               easy to build from wood, but its efficiency depends on temperature
+          > industrial composter:
+               as long as power is available temperature independent
+               "electricity" required   
+     * fertilizer:
+          "drug production" required
+          produced at the drug labor
+          2 compost -> 1 fertilizer
 
-raw compost:
-     Organic stuff giving the "... has rotted away in storage" message now converts into "raw compost".
-     Can be crafted at the crafting spot from any nutrients.
-     Has to be disposed somewhere or can be used in a composter.
-compost:
-     obviously "composting" research required
-     produced in one of the available composters
-     compost bin: 
-          easy to build from wood, but its efficiency depends on temperature
-     industrial composter:
-          as long as power is available temperature independent
-          "electricity" required   
-fertilizer:
-     "drug production" required
-     produced at the drug labor
-     2 compost -> 1 fertilizer
+New terrains (work to build should be balanced for the remove-soil-after-harvest behaviour):          
+     * tilled soil: 
+          fertility: 1.2
+     * enriched soil: 
+          fertility: 1.4 (equal to rich soil)
+     * fertilized soil:
+          fertility: 2.0
+      
+     * two higher contrast textures for mud and gravel(delete "patches.xml" in the mods "patches" folder if you don't like 'em).
+     
+Credits:
+     * Rainbeau Flambe and his "Fertile Fields" mod, which actually got me started
+     * everybody uploading their mods to github
 
-Finally the terrains placeable:          
-tilled soil: 
-     fertility: 1.2
-     requires 150 work to build    
-enriched soil: 
-     fertility: 1.4 (equal to rich soil)
-     requires 1 compost and 300 work to build
-fertilized soil:
-     fertility: 2.0
-     requires 1 fertilizer and 150 work to build
-
-Two higher contrast textures for mud and gravel have been added.
-
-Whats planned:
-     * a mechanic where the placed soil will be removed after harvesting, leaving a blueprint. This would require quite some rebalancing, but should add to the immersion of actuall doing "agriculture"...
-     No promises though =)
+Source: https://github.com/theWul/-tw-Mods
 </description>
 </ModMetaData>
 
