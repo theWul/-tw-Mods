@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Defs>
+	<RecipeDef ParentName="RecipeBionicProsthesis">
+		<defName>CreateBionicFinger</defName>
+		<label>craft bionic finger</label>
+		<description>Upgrades a prosthetic finger using plasteel and components.</description>
+		<jobString>Crafting bionics.</jobString>
+		<soundWorking>EPOEAssembling</soundWorking>
+		<products>
+			<BionicFinger>1</BionicFinger>
+		</products>
+		<recipeUsers>
+			<li>TableBionics</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ProstheticFinger</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Component</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ProstheticFinger</li>
+				<li>Plasteel</li>
+				<li>Component</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+     </RecipeDef>
+     
+	<RecipeDef ParentName="RecipeBionicProsthesis">
+		<defName>CreateBionicToe</defName>
+		<label>craft bionic toe</label>
+		<description>Upgrades a prosthetic toe using plasteel and components.</description>
+		<jobString>Crafting bionics.</jobString>
+		<soundWorking>EPOEAssembling</soundWorking>
+		<products>
+			<BionicToe>1</BionicToe>
+		</products>
+		<recipeUsers>
+			<li>TableBionics</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ProstheticToe</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Component</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ProstheticToe</li>
+				<li>Plasteel</li>
+				<li>Component</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+     </RecipeDef>
+
+	<RecipeDef ParentName="SurgeryBionic">
+		<defName>InstallBionicFinger</defName>
+		<label>install bionic finger</label>
+		<description>Installs a bionic finger.</description>
+		<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+		<jobString>Installing bionic finger.</jobString>
+		<workAmount>350</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BionicFinger</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>BionicFinger</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>LeftHandPinky</li>
+			<li>RightHandPinky</li>
+			<li>LeftHandRingFinger</li>
+			<li>RightHandRingFinger</li>
+			<li>LeftHandMiddleFinger</li>
+			<li>RightHandMiddleFinger</li>
+			<li>LeftHandIndexFinger</li>
+			<li>RightHandIndexFinger</li>
+			<li>LeftHandThumb</li>
+			<li>RightHandThumb</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BionicFinger</addsHediff>
+	</RecipeDef>
+     
+	<RecipeDef ParentName="SurgeryBionic">
+		<defName>InstallBionicToe</defName>
+		<label>install bionic toe</label>
+		<description>Installs a bionic toe.</description>
+		<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+		<jobString>Installing bionic toe.</jobString>
+		<workAmount>750</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BionicToe</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>BionicToe</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>LeftFootLittleToe</li>
+			<li>RightFootLittleToe</li>
+			<li>LeftFootFourthToe</li>
+			<li>RightFootFourthToe</li>
+			<li>LeftFootMiddleToe</li>
+			<li>RightFootMiddleToe</li>
+			<li>LeftFootSecondToe</li>
+			<li>RightFootSecondToe</li>
+			<li>LeftFootBigToe</li>
+			<li>RightFootBigToe</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BionicToe</addsHediff>
+	</RecipeDef>
+
+</Defs>

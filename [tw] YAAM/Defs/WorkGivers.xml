@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<WorkGiverDef>
+		<defName>FillCompostBin</defName>
+		<label>fill composter</label>
+		<giverClass>tw_YAAM.WorkGiver_FillCompostBin</giverClass>
+		<workType>Hauling</workType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<priorityInType>120</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>EmptyCompostBin</defName>
+		<label>take compost out</label>
+		<giverClass>tw_YAAM.WorkGiver_EmptyCompostBin</giverClass>
+		<workType>Hauling</workType>
+		<verb>take compost</verb>
+		<gerund>taking compost from</gerund>
+		<priorityInType>135</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>FillIndustrialComposter</defName>
+		<label>fill composter</label>
+		<giverClass>tw_YAAM.WorkGiver_FillIndustrialComposter</giverClass>
+		<workType>Hauling</workType>
+		<verb>fill</verb>
+		<gerund>filling</gerund>
+		<priorityInType>120</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>EmptyIndustrialComposter</defName>
+		<label>take compost out</label>
+		<giverClass>tw_YAAM.WorkGiver_EmptyIndustrialComposter</giverClass>
+		<workType>Hauling</workType>
+		<verb>take compost</verb>
+		<gerund>taking compost from</gerund>
+		<priorityInType>135</priorityInType>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+     
+</Defs>

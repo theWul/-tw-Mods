@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+     <Operation Class="PatchOperationReplace">
+          <xpath>*/TerrainDef[defName="Gravel"]/texturePath</xpath>
+          <value>
+               <texturePath>contrast_Gravel</texturePath>
+          </value>
+     </Operation>
+     <Operation Class="PatchOperationReplace">
+          <xpath>*/TerrainDef[defName="Mud"]/texturePath</xpath>
+          <value>
+               <texturePath>contrast_Mud</texturePath>
+          </value>
+     </Operation>
+</Patch>

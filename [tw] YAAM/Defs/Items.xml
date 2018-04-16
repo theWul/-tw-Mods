@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+     <ThingDef Name="twAgricultureBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+          <category>Item</category>
+          <selectable>true</selectable>
+          <altitudeLayer>Item</altitudeLayer>
+          <alwaysHaulable>true</alwaysHaulable>
+          <drawGUIOverlay>true</drawGUIOverlay>
+          <rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+          <useHitPoints>true</useHitPoints>
+     </ThingDef>
+     
+	<ThingDef ParentName="twAgricultureBase">
+		<defName>twRawCompost</defName>
+		<label>raw compost</label>
+		<description>made at the crafting spot or obtained plants or meat rot - discard it or use it to make compost in the compost bin.</description>
+		<graphicData>
+			<texPath>RawCompost</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stackLimit>75</stackLimit>
+		<statBases>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Flammability>0.5</Flammability>
+			<Mass>0.02</Mass>
+			<Beauty>-15</Beauty>
+		</statBases>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<tradeability>Never</tradeability>
+	</ThingDef>
+     
+
+     <ThingDef ParentName="twAgricultureBase">
+          <defName>twCompost</defName>
+          <label>compost</label>
+          <description>Basically rotten stuff used in agriculture.</description>
+          <graphicData>
+               <texPath>Compost</texPath>
+               <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <stackLimit>75</stackLimit>
+          <statBases>
+               <MarketValue>1</MarketValue>
+               <Mass>3.0</Mass>
+               <MaxHitPoints>50</MaxHitPoints>
+               <Flammability>0.8</Flammability>
+               <Beauty>-5</Beauty>
+               <Cleanliness>-5</Cleanliness>
+          </statBases>
+          <thingCategories>
+               <li>Manufactured</li>
+          </thingCategories>
+          <techLevel>Medieval</techLevel>
+     </ThingDef>
+
+     <ThingDef ParentName="twAgricultureBase">
+          <defName>twFertilizer</defName>
+          <label>fertilizer</label>
+          <description>Used to make fertilized soil.</description>
+          <graphicData>
+               <texPath>Fertilizer</texPath>
+               <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <stackLimit>25</stackLimit>
+          <useHitPoints>true</useHitPoints>
+          <statBases>
+               <MarketValue>5</MarketValue>
+               <Mass>5.0</Mass>
+               <MaxHitPoints>50</MaxHitPoints>
+               <Flammability>2.0</Flammability>
+               <Beauty>-5</Beauty>
+          </statBases>
+          <thingCategories>
+               <li>Manufactured</li>
+          </thingCategories>
+          <techLevel>Industrial</techLevel>
+     </ThingDef>
+</Defs>

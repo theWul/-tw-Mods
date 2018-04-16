@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef Name="twComposter" Abstract="True">
+		<label>abstract composter</label>
+		<description>abstract composter base class.</description>
+		<thingClass>tw_YAAM.Building_Composter</thingClass>
+		<designationCategory>Production</designationCategory>
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<blockLight>false</blockLight>
+		<placingDraggableDimensions>2</placingDraggableDimensions>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+		<passability>PassThroughOnly</passability>
+          <!--
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="tw_YAAM.CompProperties_Composter">
+				<capacity>75</capacity>
+				<processingTicks>1200</processingTicks>
+				<rawCompostPerCompost>15</rawCompostPerCompost>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>50</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<researchPrerequisites>
+               <li>Composting</li>
+			<li>Electricity</li>
+		</researchPrerequisites>
+          -->
+		<tickerType>Rare</tickerType>
+		<pathCost>60</pathCost>
+	</ThingDef>
+     
+	<ThingDef ParentName="twComposter">
+		<defName>twCompostBin</defName>
+		<label>compost bin</label>
+		<description>A bin in which rotted stuff turns into compost after a couple of days.</description>
+		<graphicData>
+			<texPath>CompostBin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>500</WorkToBuild>
+			<Beauty>-15</Beauty>
+		</statBases>
+		<constructEffect>ConstructWood</constructEffect>
+		<costList>
+			<WoodLog>30</WoodLog>
+		</costList>
+		<useHitPoints>true</useHitPoints>
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<comps>
+			<li Class="tw_YAAM.CompProperties_Composter">
+				<capacity>75</capacity>
+				<processingTicks>1200</processingTicks>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<pathCost>60</pathCost>
+		<researchPrerequisites>
+               <li>Composting</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<ThingDef ParentName="twComposter">
+		<defName>twIndustrialComposter</defName>
+		<label>industrial composter</label>
+		<description>A powered composter in which raw compost turns into compost. Temperature independent as long as powered.</description>
+		<graphicData>
+			<texPath>IndustrialComposter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+               <drawSize>(2,2)</drawSize>
+		</graphicData>
+		<statBases>
+			<WorkToBuild>5000</WorkToBuild>
+			<Beauty>-15</Beauty>
+		</statBases>
+		<constructEffect>ConstructMetal</constructEffect>
+		<costList>
+                <Steel>100</Steel>
+                <Component>2</Component>
+		</costList>
+		<useHitPoints>true</useHitPoints>
+		<size>(2,2)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="tw_YAAM.CompProperties_Composter">
+				<capacity>300</capacity>
+				<processingTicks>1200</processingTicks>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<researchPrerequisites>
+               <li>Composting</li>
+			<li>Electricity</li>
+		</researchPrerequisites>
+		<tickerType>Rare</tickerType>
+		<pathCost>60</pathCost>
+	</ThingDef>
+
+</Defs>

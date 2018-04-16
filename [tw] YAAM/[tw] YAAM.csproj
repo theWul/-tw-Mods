@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A215D81-5424-48ED-818C-00733638A8F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tw_YAAM</RootNamespace>
+    <AssemblyName>[tw] YAAM</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HugsLib">
+      <HintPath>..\..\SampleMods\RimworldHugsLib-master\Mods\HugsLib\Assemblies\HugsLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\SteamApps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Composter.cs" />
+    <Compile Include="tw_YAAM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About\About.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="About\Preview.png" />
+    <Content Include="Assemblies\0Harmony.dll" />
+    <Content Include="Defs\Buildings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Defs\JobDefs.xml" />
+    <Content Include="Defs\Recipes.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Defs\Items.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Defs\ResearchProjects.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Defs\Terrain.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Defs\WorkGivers.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Languages\English\Keyed\English.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Patches\Patches.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Textures\Compost.png" />
+    <Content Include="Textures\CompostBin.png" />
+    <Content Include="Textures\contrast_Mud.png" />
+    <Content Include="Textures\contrast_Gravel.png" />
+    <Content Include="Textures\RawCompost.png" />
+    <Content Include="Textures\Fertilizer.png" />
+    <Content Include="Textures\Recipes.xml" />
+    <Content Include="Textures\IndustrialComposter.png" />
+    <Content Include="Textures\SoilFertilized.png" />
+    <Content Include="Textures\SoilEnriched.png" />
+    <Content Include="Textures\SoilTilled.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set deploy=C:\Program Files (x86)\Steam\SteamApps\common\RimWorld\Mods\[tw] YAAM\
+xcopy "$(ProjectDir)About" "%25deploy%25About" /S /E /I /Y /F
+xcopy "$(ProjectDir)Assemblies" "%25deploy%25Assemblies" /S /E /I /Y /F
+xcopy "$(ProjectDir)Defs" "%25deploy%25Defs" /S /E /I /Y /F
+xcopy "$(ProjectDir)Languages" "%25deploy%25Languages" /S /E /I /Y /F
+xcopy "$(ProjectDir)Patches" "%25deploy%25Patches" /S /E /I /Y /F
+xcopy "$(ProjectDir)Textures" "%25deploy%25Textures" /S /E /I /Y /F</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>set deploy=C:\Program Files (x86)\Steam\SteamApps\common\RimWorld\Mods\[tw] YAAM\
+del /S /Q "%25deploy%25*"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

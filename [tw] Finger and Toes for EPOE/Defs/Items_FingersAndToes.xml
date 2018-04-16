@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Defs>
+     <ThingDef ParentName="Simple">
+		<defName>ProstheticFinger</defName>
+		<label>prosthetic finger</label>
+		<description>At least you have something to put in your nose again.</description>
+		<statBases>
+			<MarketValue>150</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<ThingDef ParentName="Simple">
+		<defName>ProstheticToe</defName>
+		<label>prosthetic toe</label>
+		<description>Not very pretty.</description>
+		<statBases>
+			<MarketValue>150</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<ThingDef ParentName="Bionic">
+		<defName>BionicFinger</defName>
+		<label>bionic finger</label>
+		<description>Bionic finger replacement. Can still pick your nose with it.</description>
+		<statBases>
+			<MarketValue>300</MarketValue>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<ThingDef ParentName="Bionic">
+		<defName>BionicToe</defName>
+		<label>bionic toe</label>
+		<description>This prosthesis helps walking (somewhat).</description>
+		<statBases>
+			<MarketValue>300</MarketValue>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<ThingDef ParentName="Advanced">
+		<defName>AdvancedBionicFinger</defName>
+		<label>advanced bionic finger</label>
+		<description>A gorgeous piece of tech. Not recommended to pick your nose with.</description>
+		<statBases>
+			<MarketValue>900</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	<ThingDef ParentName="Advanced">
+		<defName>AdvancedBionicToe</defName>
+		<label>advanced bionic toe</label>
+		<description>Walk even better than before.</description>
+		<statBases>
+			<MarketValue>900</MarketValue>
+			<Mass>1</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+     
+</Defs>

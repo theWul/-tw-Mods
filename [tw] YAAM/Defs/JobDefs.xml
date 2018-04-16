@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<JobDef>
+		<defName>FillComposter</defName>
+		<driverClass>tw_YAAM.JobDriver_FillComposter</driverClass>
+		<reportString>filling TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>EmptyComposter</defName>
+		<driverClass>tw_YAAM.JobDriver_EmptyComposter</driverClass>
+		<reportString>emptying TargetA.</reportString>
+	</JobDef>
+
+
+</Defs>

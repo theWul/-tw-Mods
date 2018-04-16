@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<ModMetaData>
+     <name>[tW] Finger and Toes for EPOE</name>
+     <author>theWul</author>
+     <targetVersion>0.18.0</targetVersion>
+     <description>
+EPOE-extension to allow finger and toe replacements.
+Ensure that EPOE is loaded prior to this mod.
+ 
+Based heavily on the mod "Prosthetic Didgets" by Zero.
+I used the same ThingDef-names so you can upgrade existing saves to the EPOE-version without losing any already installed parts.
+And of course credits to Ykara for the fantastic EPOE mod.
+     </description>
+</ModMetaData>
+

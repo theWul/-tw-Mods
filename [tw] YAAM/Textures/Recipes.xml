@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+     <RecipeDef>
+          <defName>twCompost</defName>
+          <label>make compost</label>
+          <description>Gather materials to compost.</description>
+          <jobString>Gathering materials to compost.</jobString>
+          <allowMixingIngredients>true</allowMixingIngredients>
+          <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+          <ingredients>
+               <li>
+                    <filter>
+                         <categories>
+                              <li>FoodRaw</li>
+                              <li>PlantFoodRaw</li>
+                         </categories>
+                    </filter>
+                    <count>3.5</count>
+               </li>
+          </ingredients>
+          <fixedIngredientFilter>
+               <categories>
+                    <li>FoodRaw</li>
+                    <li>PlantFoodRaw</li>
+               </categories>
+          </fixedIngredientFilter>
+          <products>
+               <twCompost>15</twCompost>
+          </products>
+		<workAmount>300</workAmount>
+          <workSkill>Crafting</workSkill>
+          <workSpeedStat>DrugProductionSpeed</workSpeedStat>
+          <effectWorking>Cook</effectWorking>
+          <soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+          <recipeUsers>
+               <li>CraftingSpot</li>
+          </recipeUsers>
+     </RecipeDef>
+
+     <RecipeDef>
+          <defName>Fertilizer</defName>
+          <label>make fertilizer</label>
+          <description>Gather compost to make fertilizer.</description>
+          <jobString>Gathering compost to make fertilizer.</jobString>
+          <ingredients>
+               <li>
+                    <filter>
+                         <thingDefs>
+                              <li>twCompost</li>
+                         </thingDefs>
+                    </filter>
+				<count>2</count>
+               </li>
+          </ingredients>
+          <fixedIngredientFilter>
+               <thingDefs>
+                    <li>twCompost</li>
+               </thingDefs>
+          </fixedIngredientFilter>
+          <products>
+               <twFertilizer>1</twFertilizer>
+          </products>
+          <workAmount>400</workAmount>          
+          <workSkill>Crafting</workSkill>
+          <workSpeedStat>DrugProductionSpeed</workSpeedStat>
+          <effectWorking>Cook</effectWorking>
+          <soundWorking>Recipe_ButcherCorpseFlesh</soundWorking>
+          <recipeUsers>
+               <li>DrugLab</li>
+          </recipeUsers>
+     </RecipeDef>
+
+</Defs>

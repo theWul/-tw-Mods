@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+     <ResearchProjectDef>
+          <defName>Composting</defName>
+          <label>composting</label>
+          <description>knowledge of how to prepare plants and meat as well rotted stuff for compostion. And of course somebody had the idea to toss the stuff on the field...</description>
+          <baseCost>500</baseCost>
+          <techLevel>Medieval</techLevel>
+          <researchViewX>0</researchViewX>
+          <researchViewY>0.5</researchViewY>
+          <prerequisites></prerequisites>
+     </ResearchProjectDef>
+</Defs>

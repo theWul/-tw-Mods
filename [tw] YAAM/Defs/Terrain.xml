@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+     <TerrainDef Name="twTerrainBase" Abstract="True">
+          <edgeType>FadeRough</edgeType>
+          <renderPrecedence>335</renderPrecedence>
+          <designationCategory>Floors</designationCategory>
+          <constructEffect>ConstructDirt</constructEffect>
+          <affordances>
+               <li>Light</li>
+               <li>Heavy</li>
+               <li>GrowSoil</li>
+               <li>Diggable</li>
+          </affordances>
+          <avoidWander>true</avoidWander>
+          <terrainFilthDef>FilthDirt</terrainFilthDef>
+          <takeFootprints>True</takeFootprints>
+          <terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
+     </TerrainDef>
+
+     <TerrainDef  ParentName="twTerrainBase">
+          <defName>twSoilTilled</defName>
+          <label>tilled soil</label>
+          <description>Plowed soil in its simplest form. 20% higher fertility then normal soil.</description>
+          <texturePath>SoilTilled</texturePath>
+          <pathCost>2</pathCost>
+          <statBases>
+               <Beauty>-1</Beauty>
+               <Cleanliness>-1</Cleanliness>
+               <WorkToBuild>2000</WorkToBuild>
+          </statBases>
+          <fertility>1.2</fertility>
+     </TerrainDef>
+     <TerrainDef ParentName="twTerrainBase">
+          <defName>twSoilEnriched</defName>
+          <label>enriched soil</label>
+          <description>Artificial rich soil created by mixing compost into the soil during plowing. Same fertility as natural rich soil.</description>
+          <texturePath>SoilEnriched</texturePath>
+          <pathCost>2</pathCost>
+          <statBases>
+               <Beauty>-1</Beauty>
+               <Cleanliness>-1</Cleanliness>
+               <WorkToBuild>2000</WorkToBuild>
+          </statBases>
+          <costList>
+               <twCompost>1</twCompost>
+          </costList>
+          <fertility>1.4</fertility>
+          <researchPrerequisites>
+               <li>Composting</li>
+          </researchPrerequisites>
+     </TerrainDef>
+     <TerrainDef  ParentName="twTerrainBase">
+          <defName>twSoilFertilized</defName>
+          <label>fertilized soil</label>
+          <description>Fertilized soil. The best you can get with twice the fertility of normal soil.</description>
+          <texturePath>SoilFertilized</texturePath>
+          <pathCost>2</pathCost>
+          <statBases>
+               <Beauty>-1</Beauty>
+               <Cleanliness>-1</Cleanliness>
+               <WorkToBuild>2000</WorkToBuild>
+          </statBases>
+          <costList>
+               <twFertilizer>1</twFertilizer>
+          </costList>
+          <fertility>2.0</fertility>
+          <researchPrerequisites>
+               <li>Composting</li>
+               <li>DrugProduction</li>
+          </researchPrerequisites>
+     </TerrainDef>
+
+
+
+</Defs>
