@@ -35,11 +35,6 @@ namespace tw_YAAM
           {
           public static SettingHandle<bool> ConvertSoilAfterHarvest;
           public static SettingHandle<bool> PlaceBlueprint;
-          private static readonly string twYAAM_ConvertSoilAfterHarvest_Title = "Convert terraformed soil after harvest";
-          private static readonly string twYAAM_ConvertSoilAfterHarvest_Description = "Tilled soil, enriched soil and fertilized soil will convert back to normal soil after plants have been harvested.";
-          private static readonly string twYAAM_PlaceBlueprint_Title = "Place blueprint after removing terraformed soil";
-          private static readonly string twYAAM_PlaceBlueprint_Description = "After converting ba ck to normal soil a blueprint of the removed type of soil will be placed.";
-
           public override string ModIdentifier
                {
                get { return "tw_YAAM"; }
@@ -47,8 +42,8 @@ namespace tw_YAAM
           public override void DefsLoaded ()
                {
                base.DefsLoaded ();
-               ConvertSoilAfterHarvest = Settings.GetHandle<bool> ("ConvertSoilAfterHarvest", twYAAM_ConvertSoilAfterHarvest_Title, twYAAM_ConvertSoilAfterHarvest_Description, true);
-               PlaceBlueprint = Settings.GetHandle<bool> ("PlaceBlueprint", twYAAM_PlaceBlueprint_Title, twYAAM_PlaceBlueprint_Description, true);
+               ConvertSoilAfterHarvest = Settings.GetHandle<bool> ("ConvertSoilAfterHarvest", "twYAAM_ConvertSoilAfterHarvest_Title".Translate(), "twYAAM_ConvertSoilAfterHarvest_Description".Translate(), true);
+               PlaceBlueprint = Settings.GetHandle<bool> ("PlaceBlueprint", "twYAAM_PlaceBlueprint_Title".Translate(), "twYAAM_PlaceBlueprint_Description".Translate(), true);
                Verse.Log.Message ("tw_YAAM 1.0, ConvertSoilAfterHarvest=" + ConvertSoilAfterHarvest.ToString() + ", PlaceBlueprint=" + PlaceBlueprint.ToString());
                }
           }

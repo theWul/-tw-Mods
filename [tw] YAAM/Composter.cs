@@ -44,12 +44,6 @@ namespace tw_YAAM
           private static readonly Color BarZeroProgressColor = new Color (0.6f, 0.3f, 0.3f);
           private static readonly Color BarFullProgressColor = new Color (1f, 1f, 0.3f);
           private static readonly Material BarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial (new Color (0.3f, 0.3f, 0.3f));
-          public static readonly string twComposter_Incomplete = "{0}: can't take out product when not complete ({1})";
-          private static readonly string twComposter_Inspect_Resources = "{0} / {1} raw compost";
-          private static readonly string twComposter_Inspect_Processed = "{0} processed";
-          private static readonly string twComposter_Inspect_Powered = "200% efficiency (powered)";
-          private static readonly string twComposter_Inspect_Temperature = "{0} efficiency (temperature {1}°)";
-          private static readonly string twComposter_Inspect_Produced = "{0} compost will be produced";
 
           public override void SpawnSetup (Map map, bool respawningAfterLoad)
                {
@@ -135,7 +129,7 @@ namespace tw_YAAM
                {
                if (!this.ProcessComplete)
                     {
-                    Log.Warning (string.Format(twComposter_Incomplete, this.Label, Progress.ToStringPercent("0")));
+                    Log.Warning (string.Format("twComposter_Incomplete".Translate(), this.Label, Progress.ToStringPercent("0")));
                     return null;
                     }
                Thing thing = ThingMaker.MakeThing (ThingDefOf.twCompost, null);
@@ -156,14 +150,14 @@ namespace tw_YAAM
                StringBuilder stringBuilder = new StringBuilder ();
                stringBuilder.Append (base.GetInspectString ());
                if (stringBuilder.Length != 0) stringBuilder.AppendLine ();
-               stringBuilder.AppendLine (string.Format(twComposter_Inspect_Resources, RawCompostCount.ToString(), Capacity.ToString ()));
+               stringBuilder.AppendLine (string.Format("twComposter_Inspect_Resources".Translate(), RawCompostCount.ToString(), Capacity.ToString ()));
                if (!Empty)
                     {
-                    stringBuilder.AppendLine (string.Format(twComposter_Inspect_Processed, progress.ToStringPercent ("0")));
+                    stringBuilder.AppendLine (string.Format("twComposter_Inspect_Processed".Translate(), progress.ToStringPercent ("0")));
                     if (this.compPowerTrader != null && this.compPowerTrader.PowerOn)
-                         stringBuilder.AppendLine (twComposter_Inspect_Powered);
-                    else stringBuilder.AppendLine (string.Format(twComposter_Inspect_Temperature, TemperatureFactor.ToStringPercent ("0"), Temperature.ToString ("#.0")));
-                    stringBuilder.AppendLine (string.Format(twComposter_Inspect_Produced, (RawCompostCount / rawCompostPerCompost).ToString()));
+                         stringBuilder.AppendLine ("twComposter_Inspect_Powered".Translate());
+                    else stringBuilder.AppendLine (string.Format("twComposter_Inspect_Temperature".Translate(), TemperatureFactor.ToStringPercent ("0"), Temperature.ToString ("#.0")));
+                    stringBuilder.AppendLine (string.Format("twComposter_Inspect_Produced".Translate(), (RawCompostCount / rawCompostPerCompost).ToString()));
                     }
                return stringBuilder.ToString ().TrimEndNewlines ();
                }
@@ -357,7 +351,7 @@ namespace tw_YAAM
                if (pawn.Map.designationManager.DesignationOn (t, DesignationDefOf.Deconstruct) != null) return false;
                if (!composter.ProcessComplete)
                     {
-                    JobFailReason.Is (string.Format(Building_Composter.twComposter_Incomplete, t.Label, composter.Progress.ToStringPercent ("0")));
+                    JobFailReason.Is (string.Format("twComposter_Incomplete".Translate(), t.Label, composter.Progress.ToStringPercent ("0")));
                     return false;
                     }
                return pawn.CanReserveAndReach (t, PathEndMode.Touch, pawn.NormalMaxDanger (), 1);

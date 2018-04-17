@@ -5,12 +5,10 @@
      <targetVersion>0.18.0</targetVersion>
      <description>
           
-Of course there are quite some other mods offering a broad range of terraforming, but to me some are either to complicated or do not improve gameplay.
-So I startet with this one:
+Of course there are quite some other mods offering a broad range of terraforming, but I wanted a somewhat different gameplay experience:
      * simple, but respecting research progression
      * close to vanilla
-     * add an "agriculture" gameplay element: 
-       By default the improved terrains are converted back to normal soil after harvesting, leaving a blueprint to improve the terrain again.
+     * add an "agriculture" gameplay element: by default the improved terrains are converted back to normal soil after harvesting, leaving a blueprint to improve the terrain again.
        Both behaviours can be turned off with the standard ingame mod settings 
      
 New research: Composting
@@ -33,7 +31,7 @@ New items and buildings:
           produced at the drug labor
           2 compost -> 1 fertilizer
 
-New terrains (work to build should be balanced for the remove-soil-after-harvest behaviour):          
+New terrains (work to build is? balanced for the remove-soil-after-harvest behaviour):          
      * tilled soil: 
           fertility: 1.2
      * enriched soil: 
@@ -41,7 +39,14 @@ New terrains (work to build should be balanced for the remove-soil-after-harvest
      * fertilized soil:
           fertility: 2.0
       
-     * two higher contrast textures for mud and gravel(delete "patches.xml" in the mods "patches" folder if you don't like 'em).
+     * two higher contrast textures for mud and gravel (delete "patches.xml" in the mods "patches" folder if you don't like 'em).
+
+Compatibility:
+     * can be added to existing saves
+     * removal from existing saves is somewhat unpredictable as long as any of the added terrains, items or buildings are on the map
+     * other mods: 
+       - should work with everything out there 
+       - the patching of food decay should be technically safe (thanks to harmony) but may lead to unintuitve results with other mods doing the same 
      
 Credits:
      * Rainbeau Flambe and his "Fertile Fields" mod, which actually got me started
