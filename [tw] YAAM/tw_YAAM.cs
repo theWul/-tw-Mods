@@ -57,8 +57,11 @@ namespace tw_YAAM
           public static ThingDef twCompostBin;
           public static ThingDef twIndustrialComposter;
           }
-
-
+	[DefOf]
+	public static class TerrainDefOf 
+          {
+		public static TerrainDef twExtraSoil;
+          }
      [HarmonyPatch (typeof (CompRottable), "CompTickRare")]
      public static class CompRottable_CompTickRare
           {
@@ -94,21 +97,21 @@ namespace tw_YAAM
      class JobDriver_PlantHarvest_PlantWorkDoneToil {
           static void Postfix (JobDriver_PlantHarvest __instance, Toil __result)
                {
-               Thing thing = __instance.job.targetA.Thing;
-               TerrainDef terrainDef = thing.Map.terrainGrid.TerrainAt(thing.Position);
-               if (terrainDef.defName.StartsWith("twSoil") && tw_YAAM.ConvertSoilAfterHarvest)
-                    {
-                    __result.initAction = delegate
-			          {
-                         Thing _thing = __result.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
-                         IntVec3 _pos = _thing.Position;
-                         Map _map = __result.actor.Map;
-				     _map.designationManager.RemoveAllDesignationsOn(_thing, false);
-                         TerrainDef _terrainDef =  _map.terrainGrid.TerrainAt(_pos);
-                         _map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, TerrainDefOf.Soil);
-				     if (tw_YAAM.PlaceBlueprint) GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
-			          };
-                    }
+               __result.initAction = delegate
+			     {
+                    Thing _thing = __result.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
+                    Map _map = __result.actor.Map;
+				_map.designationManager.RemoveAllDesignationsOn(_thing, false);
+                    if (!tw_YAAM.ConvertSoilAfterHarvest) return;
+                    IntVec3 _pos = _thing.Position;
+                    TerrainDef _terrainDef =  _map.terrainGrid.TerrainAt(_pos);
+                    if (!_terrainDef.defName.StartsWith("twSoil")) return;
+                    _map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, TerrainDefOf.twExtraSoil);
+                    if ( _map.terrainGrid.TerrainAt(_pos).defName != TerrainDefOf.twExtraSoil.defName) Verse.Log.Warning("tw_YAMM.ConvertSoilAfterHarvest failed at " + _pos.ToString());
+				if (!tw_YAAM.PlaceBlueprint) return;
+                    Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
+                    if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName);
+			     };
                }
           }
      }
