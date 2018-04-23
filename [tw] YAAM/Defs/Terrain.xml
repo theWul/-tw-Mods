@@ -18,14 +18,14 @@
 
 	<TerrainDef ParentName="twTerrainBase">
 		<defName>twExtraSoil</defName>
-		<label>homemade soil</label>
-		<description>Takes quite some work to get artificial soil together....</description>
+		<label>soil</label>
+		<description>It takes quite some work to put a layer of soil on otherwise infertile terrain</description>
 		<texturePath>Terrain/Surfaces/Soil</texturePath>
 		<pathCost>2</pathCost>
 		<statBases>
 			<Beauty>-1</Beauty>
 			<Cleanliness>-1</Cleanliness>
-			<WorkToBuild>3000</WorkToBuild>
+			<WorkToBuild>5000</WorkToBuild>
 		</statBases>
 		<fertility>1.0</fertility>
 	</TerrainDef>
@@ -41,6 +41,7 @@
                <Cleanliness>-1</Cleanliness>
                <WorkToBuild>1000</WorkToBuild>
           </statBases>
+		<terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
           <fertility>1.2</fertility>
      </TerrainDef>
 
@@ -55,6 +56,7 @@
                <Cleanliness>-1</Cleanliness>
                <WorkToBuild>1000</WorkToBuild>
           </statBases>
+		<terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
           <costList>
                <twCompost>1</twCompost>
           </costList>
@@ -74,6 +76,7 @@
                <Cleanliness>-1</Cleanliness>
                <WorkToBuild>1000</WorkToBuild>
           </statBases>
+		<terrainAffordanceNeeded>GrowSoil</terrainAffordanceNeeded>
           <costList>
                <twFertilizer>1</twFertilizer>
           </costList>

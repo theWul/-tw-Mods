@@ -1,40 +1,31 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
 using Verse.AI;
 using Harmony;
 using HugsLib;
+using HugsLib.Utils;
 using HugsLib.Settings;
+using UnityEngine;
 
 
 namespace tw_YAAM
      {
-     /*
-     [StaticConstructorOnStartup]
-     internal static class tw_YAAM_Initializer
+     public class WorldObject : UtilityWorldObject, IExposable
           {
-          static tw_YAAM_Initializer ()
-               {
-               HarmonyInstance harmony = HarmonyInstance.Create ("thewul.rimworld.twYAAM");
-               harmony.PatchAll (Assembly.GetExecutingAssembly ());
-               }
-          }
-     public class tw_YAAM
-          {
-          public class Mod : Verse.Mod
-               {
-               public Mod (ModContentPack content) : base (content)
-                    {
-                    // Verse.Log.Message ("tw_YAAM 1.0");
-                    }
-               }
-          }
-     */
+          public List<string> GrowingZonesPlaceBlueprint = new List<string> ();
 
+          public override void ExposeData ()
+               {
+               base.ExposeData ();
+               Scribe_Collections.Look (ref GrowingZonesPlaceBlueprint, "GrowingZonesPlaceBlueprint", LookMode.Value, LookMode.Deep);
+               }
+
+          }
      public class tw_YAAM : ModBase
           {
           public static SettingHandle<bool> ConvertSoilAfterHarvest;
-          public static SettingHandle<bool> PlaceBlueprint;
+          public static WorldObject WorldObject = null;
           public override string ModIdentifier
                {
                get { return "tw_YAAM"; }
@@ -43,8 +34,12 @@ namespace tw_YAAM
                {
                base.DefsLoaded ();
                ConvertSoilAfterHarvest = Settings.GetHandle<bool> ("ConvertSoilAfterHarvest", "twYAAM_ConvertSoilAfterHarvest_Title".Translate(), "twYAAM_ConvertSoilAfterHarvest_Description".Translate(), true);
-               PlaceBlueprint = Settings.GetHandle<bool> ("PlaceBlueprint", "twYAAM_PlaceBlueprint_Title".Translate(), "twYAAM_PlaceBlueprint_Description".Translate(), true);
-               Verse.Log.Message ("tw_YAAM 1.0, ConvertSoilAfterHarvest=" + ConvertSoilAfterHarvest.ToString() + ", PlaceBlueprint=" + PlaceBlueprint.ToString());
+               Verse.Log.Message ("tw_YAAM 1.0, ConvertSoilAfterHarvest=" + ConvertSoilAfterHarvest.ToString());
+               }
+          public override void WorldLoaded ()
+               {
+               WorldObject = UtilityWorldObjectManager.GetUtilityWorldObject<WorldObject> ();
+               base.WorldLoaded ();
                }
           }
 
@@ -93,6 +88,36 @@ namespace tw_YAAM
                }
           }
 
+
+     [HarmonyPatch (typeof (Zone_Growing), "GetGizmos")]
+     public class GetGizmos
+          {
+          [HarmonyPostfix]
+          public static void Postfix (Zone_Growing __instance, ref IEnumerable<Gizmo> __result)
+               {
+               if (!tw_YAAM.ConvertSoilAfterHarvest) return;
+               __result = AddGizmos (__instance, __result);
+               }
+
+          private static IEnumerable<Gizmo> AddGizmos (Zone_Growing __instance, IEnumerable<Gizmo> __result)
+               {
+               foreach (var gizmo in __result) yield return gizmo;
+               yield return
+                    new Command_Toggle
+                         {
+                         defaultLabel = "twYAAM_PlaceBlueprint_Title".Translate (),
+                         defaultDesc = "twYAAM_PlaceBlueprint_Description".Translate (),
+                         icon = ContentFinder<Texture2D>.Get("SoilTilled"),
+                         isActive = () => tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(__instance.label),
+                         toggleAction = delegate  {
+                                                  if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(__instance.label))
+                                                       tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Remove(__instance.label);
+                                                  else tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Add(__instance.label);
+                                                  }
+                         };
+               }
+          }
+
      [HarmonyPatch (typeof (JobDriver_PlantHarvest), "PlantWorkDoneToil")]
      class JobDriver_PlantHarvest_PlantWorkDoneToil {
           static void Postfix (JobDriver_PlantHarvest __instance, Toil __result)
@@ -106,11 +131,22 @@ namespace tw_YAAM
                     IntVec3 _pos = _thing.Position;
                     TerrainDef _terrainDef =  _map.terrainGrid.TerrainAt(_pos);
                     if (!_terrainDef.defName.StartsWith("twSoil")) return;
-                    _map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, TerrainDefOf.twExtraSoil);
-                    if ( _map.terrainGrid.TerrainAt(_pos).defName != TerrainDefOf.twExtraSoil.defName) Verse.Log.Warning("tw_YAMM.ConvertSoilAfterHarvest failed at " + _pos.ToString());
-				if (!tw_YAAM.PlaceBlueprint) return;
-                    Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
-                    if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName);
+                    _map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, RimWorld.TerrainDefOf.Soil);
+                    if ( _map.terrainGrid.TerrainAt(_pos).defName != RimWorld.TerrainDefOf.Soil.defName) Verse.Log.Warning("tw_YAMM.ConvertSoilAfterHarvest failed at " + _pos.ToString());
+			     List<Zone> zonesList = _map.zoneManager.AllZones;
+			     for (int j = 0; j < zonesList.Count; j++)
+			          {
+				     Zone_Growing growZone = zonesList[j] as Zone_Growing;
+				     if (growZone == null) continue;
+					if (growZone.cells.Count == 0) continue;
+                         if (!growZone.Cells.Contains(_pos)) continue;
+                         if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(growZone.label))
+                                   {
+                                   Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
+                                   if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName + " in " + growZone.label);
+                                   return;
+                                   }
+                         }
 			     };
                }
           }

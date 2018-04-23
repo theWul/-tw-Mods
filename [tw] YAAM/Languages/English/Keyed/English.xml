@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-     <twYAAM_ConvertSoilAfterHarvest_Title>Convert terraformed soil after harvest</twYAAM_ConvertSoilAfterHarvest_Title>
+     <twYAAM_ConvertSoilAfterHarvest_Title>Convert terraformed soil</twYAAM_ConvertSoilAfterHarvest_Title>
      <twYAAM_ConvertSoilAfterHarvest_Description>Tilled soil, enriched soil and fertilized soil will convert back to normal soil after plants have been harvested.</twYAAM_ConvertSoilAfterHarvest_Description>
-     <twYAAM_PlaceBlueprint_Title>Place blueprint after removing terraformed soil</twYAAM_PlaceBlueprint_Title>
-     <twYAAM_PlaceBlueprint_Description>After converting ba ck to normal soil a blueprint of the removed type of soil will be placed.</twYAAM_PlaceBlueprint_Description>
+     <twYAAM_PlaceBlueprint_Title>Place blueprint</twYAAM_PlaceBlueprint_Title>
+     <twYAAM_PlaceBlueprint_Description>After converting back to normal soil a blueprint of the removed type of soil will be placed.</twYAAM_PlaceBlueprint_Description>
      <twComposter_Incomplete>{0}: can't take out product when not complete ({1})</twComposter_Incomplete>
      <twComposter_Inspect_Resources>{0} / {1} raw compost</twComposter_Inspect_Resources>
      <twComposter_Inspect_Processed>{0} processed</twComposter_Inspect_Processed>

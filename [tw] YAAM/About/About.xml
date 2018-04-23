@@ -9,7 +9,8 @@ Of course there are quite some other mods offering a broad range of terraforming
      * simple, but respecting research progression
      * close to vanilla
      * add an "agriculture" gameplay element: by default the improved terrains are converted back to normal soil after harvesting, leaving a blueprint to improve the terrain again.
-       Both behaviours can be turned off with the standard ingame mod settings 
+       Theres a mod option to completely turn off this conversion behaviour. 
+       If conversion is turned on, blueprint placing can be toggled for each growing zone individually.       
      
 New research: Composting
 
