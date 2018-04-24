@@ -7,7 +7,7 @@ using HugsLib;
 using HugsLib.Utils;
 using HugsLib.Settings;
 using UnityEngine;
-
+using System.Xml;
 
 namespace tw_YAAM
      {
@@ -44,6 +44,7 @@ namespace tw_YAAM
           }
 
 
+
      [DefOf]
      public static class ThingDefOf
           {
@@ -57,6 +58,7 @@ namespace tw_YAAM
           {
 		public static TerrainDef twExtraSoil;
           }
+
      [HarmonyPatch (typeof (CompRottable), "CompTickRare")]
      public static class CompRottable_CompTickRare
           {
@@ -88,9 +90,9 @@ namespace tw_YAAM
                }
           }
 
-
+     #region HarmonyPatch GrowingZone
      [HarmonyPatch (typeof (Zone_Growing), "GetGizmos")]
-     public class GetGizmos
+     public class Zone_Growing_GetGizmos
           {
           [HarmonyPostfix]
           public static void Postfix (Zone_Growing __instance, ref IEnumerable<Gizmo> __result)
@@ -117,7 +119,19 @@ namespace tw_YAAM
                          };
                }
           }
+     [HarmonyPatch (typeof (Zone_Growing), "Delete")]
+     public class Zone_Growing_Delete
+          {
+          [HarmonyPrefix]
+          static void Prefix (Zone_Growing __instance)
+               {
+               if   (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(__instance.label))
+                    tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Remove(__instance.label);
+               }
+          }
+     #endregion
 
+     
      [HarmonyPatch (typeof (JobDriver_PlantHarvest), "PlantWorkDoneToil")]
      class JobDriver_PlantHarvest_PlantWorkDoneToil {
           static void Postfix (JobDriver_PlantHarvest __instance, Toil __result)
@@ -136,14 +150,14 @@ namespace tw_YAAM
 			     List<Zone> zonesList = _map.zoneManager.AllZones;
 			     for (int j = 0; j < zonesList.Count; j++)
 			          {
-				     Zone_Growing growZone = zonesList[j] as Zone_Growing;
-				     if (growZone == null) continue;
-					if (growZone.cells.Count == 0) continue;
-                         if (!growZone.Cells.Contains(_pos)) continue;
-                         if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(growZone.label))
+				     Zone_Growing growingZone = zonesList[j] as Zone_Growing;
+				     if (growingZone == null) continue;
+					if (growingZone.cells.Count == 0) continue;
+                         if (!growingZone.Cells.Contains(_pos)) continue;
+                         if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(growingZone.label))
                                    {
                                    Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
-                                   if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName + " in " + growZone.label);
+                                   if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName + " in " + growingZone.label);
                                    return;
                                    }
                          }
