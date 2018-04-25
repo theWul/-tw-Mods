@@ -10,7 +10,8 @@ Of course there are quite some other mods offering a broad range of terraforming
      * close to vanilla
      * add an "agriculture" gameplay element: by default the improved terrains are converted back to normal soil after harvesting, leaving a blueprint to improve the terrain again.
        Theres a mod option to completely turn off this conversion behaviour. 
-       If conversion is turned on, blueprint placing can be toggled for each growing zone individually.       
+       If conversion is turned on, blueprint placing can be toggled for each growing zone individually.
+     * add buttons to growing zone UI to quickly place blueprints for the whole zone (of course only where fertility is lower)
      
 New research: Composting
 
@@ -32,7 +33,9 @@ New items and buildings:
           produced at the drug labor
           2 compost -> 1 fertilizer
 
-New terrains (work to build is? balanced for the remove-soil-after-harvest behaviour):          
+New terrains (enhanced soils need a growable terrain to build, work is? balanced for the remove-soil-after-harvest behaviour):
+     * normal soil:
+          lots of work to build, allows to convert any dry terrain to vanilla soil
      * tilled soil: 
           fertility: 1.2
      * enriched soil: 

@@ -57,6 +57,9 @@ namespace tw_YAAM
 	public static class TerrainDefOf 
           {
 		public static TerrainDef twExtraSoil;
+		public static TerrainDef twSoilTilled;
+		public static TerrainDef twSoilEnriched;
+		public static TerrainDef twSoilFertilized;
           }
 
      [HarmonyPatch (typeof (CompRottable), "CompTickRare")]
@@ -91,25 +94,43 @@ namespace tw_YAAM
           }
 
      #region HarmonyPatch GrowingZone
+     public class Terrain_Action : Command_Action
+          {
+          public Terrain_Action (Zone_Growing growingZone, TerrainDef terrainDef)
+               {
+               defaultLabel = terrainDef.label;
+               defaultDesc = string.Format("twYAAM_Gizmo_Description".Translate(), defaultLabel);
+               icon = ContentFinder<Texture2D>.Get(terrainDef.texturePath + "UI");
+               action = delegate
+                    {
+                    Map map = growingZone.Map; 
+                    foreach (IntVec3 cell in growingZone.Cells)
+                              {
+                              if (map.terrainGrid.TerrainAt(cell).fertility >= terrainDef.fertility) continue;
+                              Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(terrainDef, cell, map, Rot4.North, Faction.OfPlayer, null);
+                              if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.Terrain_Action failed for " + terrainDef.defName + " in " + growingZone.label);
+                              }
+                    };
+               }
+          }
      [HarmonyPatch (typeof (Zone_Growing), "GetGizmos")]
      public class Zone_Growing_GetGizmos
           {
           [HarmonyPostfix]
           public static void Postfix (Zone_Growing __instance, ref IEnumerable<Gizmo> __result)
                {
-               if (!tw_YAAM.ConvertSoilAfterHarvest) return;
                __result = AddGizmos (__instance, __result);
                }
 
           private static IEnumerable<Gizmo> AddGizmos (Zone_Growing __instance, IEnumerable<Gizmo> __result)
                {
                foreach (var gizmo in __result) yield return gizmo;
-               yield return
-                    new Command_Toggle
+               if (tw_YAAM.ConvertSoilAfterHarvest)
+                    yield return new Command_Toggle
                          {
                          defaultLabel = "twYAAM_PlaceBlueprint_Title".Translate (),
                          defaultDesc = "twYAAM_PlaceBlueprint_Description".Translate (),
-                         icon = ContentFinder<Texture2D>.Get("SoilTilled"),
+                         icon = ContentFinder<Texture2D>.Get("PlaceBlueprintUI"),
                          isActive = () => tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(__instance.label),
                          toggleAction = delegate  {
                                                   if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(__instance.label))
@@ -117,6 +138,9 @@ namespace tw_YAAM
                                                   else tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Add(__instance.label);
                                                   }
                          };
+               yield return new Terrain_Action (__instance, TerrainDefOf.twSoilTilled);
+               yield return new Terrain_Action (__instance, TerrainDefOf.twSoilEnriched);
+               yield return new Terrain_Action (__instance, TerrainDefOf.twSoilFertilized);
                }
           }
      [HarmonyPatch (typeof (Zone_Growing), "Delete")]
@@ -138,26 +162,26 @@ namespace tw_YAAM
                {
                __result.initAction = delegate
 			     {
-                    Thing _thing = __result.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
-                    Map _map = __result.actor.Map;
-				_map.designationManager.RemoveAllDesignationsOn(_thing, false);
+                    Thing thing = __result.actor.jobs.curJob.GetTarget(TargetIndex.A).Thing;
+                    Map map = __result.actor.Map;
+				map.designationManager.RemoveAllDesignationsOn(thing, false);
                     if (!tw_YAAM.ConvertSoilAfterHarvest) return;
-                    IntVec3 _pos = _thing.Position;
-                    TerrainDef _terrainDef =  _map.terrainGrid.TerrainAt(_pos);
-                    if (!_terrainDef.defName.StartsWith("twSoil")) return;
-                    _map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, RimWorld.TerrainDefOf.Soil);
-                    if ( _map.terrainGrid.TerrainAt(_pos).defName != RimWorld.TerrainDefOf.Soil.defName) Verse.Log.Warning("tw_YAMM.ConvertSoilAfterHarvest failed at " + _pos.ToString());
-			     List<Zone> zonesList = _map.zoneManager.AllZones;
+                    IntVec3 pos = thing.Position;
+                    TerrainDef terrainDef =  map.terrainGrid.TerrainAt(pos);
+                    if (!terrainDef.defName.StartsWith("twSoil")) return;
+                    map.terrainGrid.SetTerrain(__result.actor.jobs.curJob.targetA.Cell, RimWorld.TerrainDefOf.Soil);
+                    if ( map.terrainGrid.TerrainAt(pos).defName != RimWorld.TerrainDefOf.Soil.defName) Verse.Log.Warning("tw_YAMM.ConvertSoilAfterHarvest failed at " + pos.ToString());
+			     List<Zone> zonesList = map.zoneManager.AllZones;
 			     for (int j = 0; j < zonesList.Count; j++)
 			          {
 				     Zone_Growing growingZone = zonesList[j] as Zone_Growing;
 				     if (growingZone == null) continue;
 					if (growingZone.cells.Count == 0) continue;
-                         if (!growingZone.Cells.Contains(_pos)) continue;
+                         if (!growingZone.Cells.Contains(pos)) continue;
                          if (tw_YAAM.WorldObject.GrowingZonesPlaceBlueprint.Contains(growingZone.label))
                                    {
-                                   Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(_terrainDef, _pos, _map, Rot4.North, Faction.OfPlayer, null);
-                                   if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + _terrainDef.defName + " in " + growingZone.label);
+                                   Blueprint_Build blueprint_Build = GenConstruct.PlaceBlueprintForBuild(terrainDef, pos, map, Rot4.North, Faction.OfPlayer, null);
+                                   if (blueprint_Build == null) Verse.Log.Warning("tw_YAMM.PlaceBlueprint failed for " + terrainDef.defName + " in " + growingZone.label);
                                    return;
                                    }
                          }

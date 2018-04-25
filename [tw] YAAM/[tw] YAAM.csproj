@@ -89,6 +89,10 @@
     <Content Include="Patches\Patches.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Textures\SoilTilledUI.png" />
+    <Content Include="Textures\SoilEnrichedUI.png" />
+    <Content Include="Textures\SoilFertilizedUI.png" />
+    <Content Include="Textures\PlaceBlueprintUI.png" />
     <Content Include="Textures\Compost.png" />
     <Content Include="Textures\CompostBin.png" />
     <Content Include="Textures\contrast_Mud.png" />
