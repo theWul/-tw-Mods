@@ -31,7 +31,7 @@ New items and buildings:
      * fertilizer:
           "drug production" required
           produced at the drug labor
-          2 compost -> 1 fertilizer
+          5 compost -> 2 fertilizer
 
 New terrains (enhanced soils need a growable terrain to build, work is? balanced for the remove-soil-after-harvest behaviour):
      * normal soil:

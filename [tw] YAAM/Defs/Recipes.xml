@@ -51,7 +51,7 @@
                               <li>twCompost</li>
                          </thingDefs>
                     </filter>
-                    <count>2</count>
+                    <count>5</count>
                </li>
           </ingredients>
           <fixedIngredientFilter>
@@ -60,7 +60,7 @@
                </thingDefs>
           </fixedIngredientFilter>
           <products>
-               <twFertilizer>1</twFertilizer>
+               <twFertilizer>2</twFertilizer>
           </products>
           <workAmount>400</workAmount>
           <workSkill>Crafting</workSkill>
@@ -89,7 +89,7 @@
                               <li>twRawCompost</li>
                          </thingDefs>
                     </filter>
-                    <count>2</count>
+                    <count>25</count>
                </li>
           </ingredients>
           <fixedIngredientFilter>
