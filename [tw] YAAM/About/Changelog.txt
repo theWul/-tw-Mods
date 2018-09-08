@@ -1,0 +1,4 @@
+﻿2018-09-08
+     * 0.19 compatibility
+2018-03-20 
+     * Initial version

@@ -1,7 +1,8 @@
-﻿2018-03-20 
-     * Initial version
-2018-03-21
-     * fixed a couple of typos
+﻿2018-09-08
+     * 0.19 compatibility
 2018-04-06
      * power armor gloves and boots now have 160 hitpoints, in line with vanilla helmet
-     * power armor gloves now have 5% work speed penalty
+     * power armor gloves now have 5% work speed penalty2018-03-21
+     * fixed a couple of typos
+2018-03-20 
+     * Initial version
