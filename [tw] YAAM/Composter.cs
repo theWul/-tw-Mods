@@ -213,7 +213,7 @@ namespace tw_YAAM
                {
                get { return this.job.GetTarget (TargetIndex.B).Thing; }
                }
-          public override bool TryMakePreToilReservations ()
+          public override bool TryMakePreToilReservations (bool errorOnFailed)
                {
                return this.pawn.Reserve (this.Composter, this.job, 1, -1, null) && this.pawn.Reserve (this.RawCompost, this.job, 1, -1, null);
                }
@@ -251,7 +251,7 @@ namespace tw_YAAM
                {
                get { return this.job.GetTarget (TargetIndex.B).Thing; }
                }
-          public override bool TryMakePreToilReservations ()
+          public override bool TryMakePreToilReservations (bool errorOnFailed)
                {
                return this.pawn.Reserve (this.Composter, this.job, 1, -1, null);
                }
@@ -268,7 +268,7 @@ namespace tw_YAAM
                          {
                               Thing thing = this.Composter.TakeOutProduct ();
                               GenPlace.TryPlaceThing (thing, this.pawn.Position, this.Map, ThingPlaceMode.Near, null);
-                              StoragePriority currentPriority = HaulAIUtility.StoragePriorityAtFor (thing.Position, thing);
+                              StoragePriority currentPriority = StoragePriority.Normal;
                               IntVec3 c;
                               if (StoreUtility.TryFindBestBetterStoreCellFor (thing, this.pawn, this.Map, currentPriority, this.pawn.Faction, out c, true))
                                    {

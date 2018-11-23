@@ -32,7 +32,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Component</li>
+						<li>ComponentIndustrial</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -42,7 +42,7 @@
 			<thingDefs>
 				<li>ProstheticFinger</li>
 				<li>Plasteel</li>
-				<li>Component</li>
+				<li>ComponentIndustrial</li>
 			</thingDefs>
 		</fixedIngredientFilter>
      </RecipeDef>
@@ -79,7 +79,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Component</li>
+						<li>ComponentIndustrial</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -89,7 +89,7 @@
 			<thingDefs>
 				<li>ProstheticToe</li>
 				<li>Plasteel</li>
-				<li>Component</li>
+				<li>ComponentIndustrial</li>
 			</thingDefs>
 		</fixedIngredientFilter>
      </RecipeDef>
@@ -128,16 +128,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
-			<li>LeftHandPinky</li>
-			<li>RightHandPinky</li>
-			<li>LeftHandRingFinger</li>
-			<li>RightHandRingFinger</li>
-			<li>LeftHandMiddleFinger</li>
-			<li>RightHandMiddleFinger</li>
-			<li>LeftHandIndexFinger</li>
-			<li>RightHandIndexFinger</li>
-			<li>LeftHandThumb</li>
-			<li>RightHandThumb</li>
+			<li>Finger</li>
 		</appliedOnFixedBodyParts>
 		<addsHediff>BionicFinger</addsHediff>
 	</RecipeDef>
@@ -176,16 +167,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
-			<li>LeftFootLittleToe</li>
-			<li>RightFootLittleToe</li>
-			<li>LeftFootFourthToe</li>
-			<li>RightFootFourthToe</li>
-			<li>LeftFootMiddleToe</li>
-			<li>RightFootMiddleToe</li>
-			<li>LeftFootSecondToe</li>
-			<li>RightFootSecondToe</li>
-			<li>LeftFootBigToe</li>
-			<li>RightFootBigToe</li>
+			<li>Toe</li>
 		</appliedOnFixedBodyParts>
 		<addsHediff>BionicToe</addsHediff>
 	</RecipeDef>

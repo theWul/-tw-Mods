@@ -58,7 +58,7 @@
 
    <HediffDef ParentName="addedPartAdvanced">
       <defName>AdvancedBionicFinger</defName>
-      <label>advanced bionic finger</label>
+      <label>an advanced bionic finger</label>
       <spawnThingOnRemoved>AdvancedBionicFinger</spawnThingOnRemoved>
       <addedPartProps>
          <partEfficiency>1.0</partEfficiency>
