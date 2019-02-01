@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "[tw] Finger and Toes for EPOE", "[tw] Finger and Toes for EPOE\[tw] Finger and Toes for EPOE.csproj", "{64C6E30D-C594-44ED-8167-28182B46B5EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "[tw] Tweaks", "[tw] Tweaks\[tw] Tweaks.csproj", "{D443491C-7798-41D9-9DFF-4E1E2251FBBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{64C6E30D-C594-44ED-8167-28182B46B5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64C6E30D-C594-44ED-8167-28182B46B5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64C6E30D-C594-44ED-8167-28182B46B5EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D443491C-7798-41D9-9DFF-4E1E2251FBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D443491C-7798-41D9-9DFF-4E1E2251FBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D443491C-7798-41D9-9DFF-4E1E2251FBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D443491C-7798-41D9-9DFF-4E1E2251FBBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
