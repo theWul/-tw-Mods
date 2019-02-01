@@ -384,9 +384,8 @@
                </skillRequirements>
           </recipeMaker>
           <costList>
-               <ComponentIndustrial>35</ComponentIndustrial>
-               <Jade>25</Jade>
-               <Steel>245</Steel>
+               <ComponentIndustrial>5</ComponentIndustrial>
+               <Jade>10</Jade>
           </costList>
           <generateCommonality>0.01</generateCommonality>
           <tradeTags>
