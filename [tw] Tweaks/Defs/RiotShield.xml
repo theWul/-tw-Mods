@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+     <ApparelLayerDef>
+          <defName>Shield</defName>
+          <label>shield</label>
+          <drawOrder>600</drawOrder>
+     </ApparelLayerDef>
+
+
+  <ThingDef ParentName="HatMakeableBase">
+          <defName>Apparel_RiotShield</defName>
+          <label>riot shield</label>
+          <description>A huge metal shield.</description>
+          <graphicData>
+               <texPath>RiotShield</texPath>
+               <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <techLevel>Industrial</techLevel>
+          <costStuffCount>100</costStuffCount>
+          <stuffCategories>
+               <li>Metallic</li>
+          </stuffCategories>
+          <recipeMaker>
+               <unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef>
+               <researchPrerequisite>Machining</researchPrerequisite>
+               <recipeUsers>
+                    <li>ElectricSmithy</li>
+                    <li>FueledSmithy</li>
+               </recipeUsers>
+               <skillRequirements>
+                    <Crafting>8</Crafting>
+               </skillRequirements>
+          </recipeMaker>
+          <statBases>
+               <WorkToMake>14000</WorkToMake>
+               <Mass>7</Mass>
+               <MaxHitPoints>300</MaxHitPoints>
+               <ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+               <ArmorRating_Blunt>1.5</ArmorRating_Blunt>
+               <ArmorRating_Heat>0.5</ArmorRating_Heat>
+               <EquipDelay>0.1</EquipDelay>
+          </statBases>
+          <useHitPoints>True</useHitPoints>
+          <smeltable>True</smeltable>
+          <apparel>
+               <tags>
+                    <li>IndustrialAdvanced</li>
+               </tags>
+               <bodyPartGroups>
+                    <li>Shoulders</li>
+                    <li>Neck</li>
+                    <li>Torso</li>
+                    <li>Shoulders</li>
+                    <li>Arms</li>
+                    <li>LeftHand</li>
+                    <li>Waist</li>
+                    <li>Legs</li>
+               </bodyPartGroups>
+               <layers>
+                    <li>Shield</li>
+               </layers>
+          </apparel>
+          <equippedStatOffsets>
+               <MoveSpeed>-0.1</MoveSpeed>
+               <MeleeDodgeChance>-0.05</MeleeDodgeChance>
+               <ShootingAccuracyPawn>-0.1</ShootingAccuracyPawn>
+               <AimingDelayFactor>0.05</AimingDelayFactor>
+          </equippedStatOffsets>
+     </ThingDef>
+
+</Defs>

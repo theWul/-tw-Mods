@@ -47,8 +47,10 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="About\Preview.png" />
-    <Content Include="Defs\StunRod.xml" />
-    <Content Include="Textures\club_stun_melee.png" />
+    <Content Include="Defs\RiotShield.xml" />
+    <Content Include="Defs\ShockRod.xml" />
+    <Content Include="Textures\ShockRod.png" />
+    <Content Include="Textures\RiotShield.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

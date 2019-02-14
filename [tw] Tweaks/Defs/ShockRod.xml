@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+     <DamageDef ParentName="BluntBase">
+          <defName>BluntShock</defName>
+          <label>Shock smash</label>
+          <workerClass>DamageWorker_Blunt</workerClass>
+          <externalViolence>false</externalViolence>
+          <deathMessage>{0} got hit too hard.</deathMessage>
+          <hediffSkin>Bruise</hediffSkin>
+          <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+          <impactSoundType>Blunt</impactSoundType>
+          <armorCategory>Blunt</armorCategory>
+          <overkillPctToDestroyPart>0~0</overkillPctToDestroyPart>
+          <buildingDamageFactor>0.5</buildingDamageFactor>
+          <bluntStunDuration>2.0</bluntStunDuration>
+          <bluntInnerHitChance>1</bluntInnerHitChance>
+          <bluntInnerHitDamageFractionToConvert>
+               <min>0.1</min>
+               <max>0.2</max>
+          </bluntInnerHitDamageFractionToConvert>
+          <bluntInnerHitDamageFractionToAdd>
+               <min>0.1</min>
+               <max>0.25</max>
+          </bluntInnerHitDamageFractionToAdd>
+          <additionalHediffs>
+               <li>
+                    <hediff>PsychicShock</hediff>
+                    <severityPerDamageDealt>1</severityPerDamageDealt>
+                    <victimSeverityScaling>ToxicSensitivity</victimSeverityScaling>
+               </li>
+          </additionalHediffs>
+     </DamageDef>
+
+     <ManeuverDef>
+          <defName>BluntShock</defName>
+          <requiredCapacity>BluntShock</requiredCapacity>
+          <verb>
+               <verbClass>Verb_MeleeAttackDamage</verbClass>
+               <meleeDamageDef>BluntShock</meleeDamageDef>
+          </verb>
+          <logEntryDef>MeleeAttack</logEntryDef>
+          <combatLogRulesHit>Maneuver_Smash_MeleeHit</combatLogRulesHit>
+          <combatLogRulesDeflect>Maneuver_Smash_MeleeDeflect</combatLogRulesDeflect>
+          <combatLogRulesMiss>Maneuver_Smash_MeleeMiss</combatLogRulesMiss>
+          <combatLogRulesDodge>Maneuver_Smash_MeleeDodge</combatLogRulesDodge>
+     </ManeuverDef>
+
+
+     <ToolCapacityDef>
+          <defName>BluntShock</defName>
+     </ToolCapacityDef>
+
+     <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+          <defName>MeleeWeapon_ShockRod</defName>
+          <label>Shock Rod</label>
+          <techLevel>Industrial</techLevel>
+          <description>A shock rod - make your target unconscious.</description>
+          <graphicData>
+               <texPath>ShockRod</texPath>
+               <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <weaponTags>
+               <li>IndustrialAdvanced</li>
+          </weaponTags>
+          <costStuffCount>50</costStuffCount>
+          <statBases>
+               <MarketValue>95000</MarketValue>
+               <WorkToMake>100000</WorkToMake>
+               <Mass>0.75</Mass>
+          </statBases>
+          <equippedAngleOffset>-65</equippedAngleOffset>
+          <stuffCategories>
+               <li>Metallic</li>
+          </stuffCategories>
+          <tools>
+               <li>
+                    <label>head</label>
+                    <labelUsedInLogging>false</labelUsedInLogging>
+                    <capacities>
+                         <li>BluntShock</li>
+                    </capacities>
+                    <power>5</power>
+                    <cooldownTime>0.5</cooldownTime>
+                    <surpriseAttack>
+                         <extraMeleeDamages>
+                              <li>
+                                   <def>Stun</def>
+                                   <amount>50</amount>
+                              </li>
+                         </extraMeleeDamages>
+                    </surpriseAttack>
+               </li>
+          </tools>
+          <recipeMaker>
+               <recipeUsers>
+                    <li>TableMachining</li>
+               </recipeUsers>
+               <skillRequirements>
+                    <Crafting>8</Crafting>
+               </skillRequirements>
+          </recipeMaker>
+          <costList>
+               <ComponentIndustrial>5</ComponentIndustrial>
+          </costList>
+          <generateCommonality>0.01</generateCommonality>
+          <tradeTags>
+               <li>Exotic</li>
+          </tradeTags>
+     </ThingDef>
+
+
+</Defs>
