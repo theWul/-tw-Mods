@@ -49,6 +49,22 @@
     <Content Include="About\Preview.png" />
     <Content Include="Defs\RiotShield.xml" />
     <Content Include="Defs\ShockRod.xml" />
+    <Content Include="Textures\RiotShieldm.png" />
+    <Content Include="Textures\RiotShield_Fat_east.png" />
+    <Content Include="Textures\RiotShield_Fat_north.png" />
+    <Content Include="Textures\RiotShield_Fat_south.png" />
+    <Content Include="Textures\RiotShield_Female_east.png" />
+    <Content Include="Textures\RiotShield_Female_north.png" />
+    <Content Include="Textures\RiotShield_Female_south.png" />
+    <Content Include="Textures\RiotShield_Hulk_east.png" />
+    <Content Include="Textures\RiotShield_Hulk_north.png" />
+    <Content Include="Textures\RiotShield_Hulk_south.png" />
+    <Content Include="Textures\RiotShield_Male_east.png" />
+    <Content Include="Textures\RiotShield_Male_north.png" />
+    <Content Include="Textures\RiotShield_Male_south.png" />
+    <Content Include="Textures\RiotShield_Thin_east.png" />
+    <Content Include="Textures\RiotShield_Thin_north.png" />
+    <Content Include="Textures\RiotShield_Thin_south.png" />
     <Content Include="Textures\ShockRod.png" />
     <Content Include="Textures\RiotShield.png" />
   </ItemGroup>

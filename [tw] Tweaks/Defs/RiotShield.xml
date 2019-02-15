@@ -3,11 +3,11 @@
      <ApparelLayerDef>
           <defName>Shield</defName>
           <label>shield</label>
-          <drawOrder>600</drawOrder>
+          <drawOrder>500</drawOrder>
      </ApparelLayerDef>
 
 
-  <ThingDef ParentName="HatMakeableBase">
+  <ThingDef ParentName="ArmorSmithableBase">
           <defName>Apparel_RiotShield</defName>
           <label>riot shield</label>
           <description>A huge metal shield.</description>
@@ -56,6 +56,7 @@
                     <li>Waist</li>
                     <li>Legs</li>
                </bodyPartGroups>
+               <wornGraphicPath>RiotShield</wornGraphicPath>
                <layers>
                     <li>Shield</li>
                </layers>
@@ -67,5 +68,4 @@
                <AimingDelayFactor>0.05</AimingDelayFactor>
           </equippedStatOffsets>
      </ThingDef>
-
 </Defs>
